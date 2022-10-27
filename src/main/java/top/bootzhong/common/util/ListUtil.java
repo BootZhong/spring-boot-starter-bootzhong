@@ -1,7 +1,9 @@
 package top.bootzhong.common.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -183,6 +185,25 @@ public class ListUtil {
             }
         }
         return null;
+    }
+
+    /**
+     * 把list分割成多批
+     * @param tList
+     * @param batchSize
+     * @return
+     */
+    public static <T> List<List<T>> split(List<T> tList, int batchSize){
+        int start = 0;
+        int total = tList.size();
+
+        List<List<T>> result = new ArrayList<>();
+        while (start < total){
+            int endIndex = Math.min(start + batchSize, total);
+            result.add(tList.subList(start, endIndex));
+            start = start + batchSize;
+        }
+        return result;
     }
 
     /**
