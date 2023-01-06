@@ -22,7 +22,7 @@ public class TimeUtil {
      * @param date
      * @return
      */
-    public static Long toDay(Date date){
+    public static Integer toDay(Date date){
         return toNumber(date, DAY_NUM_FORMAT);
     }
 
@@ -31,7 +31,7 @@ public class TimeUtil {
      * @param date
      * @return
      */
-    public static Long toDay(String date){
+    public static Integer toDay(String date){
         return toNumber(parseDay(date), DAY_NUM_FORMAT);
     }
 
@@ -40,7 +40,7 @@ public class TimeUtil {
      * @param date
      * @return
      */
-    public static Long toMon(Date date){
+    public static Integer toMon(Date date){
         return toNumber(date, MONTH_NUM_FORMAT);
     }
 
@@ -49,10 +49,10 @@ public class TimeUtil {
      * @param date
      * @return
      */
-    private static Long toNumber(Date date, String format){
+    private static Integer toNumber(Date date, String format){
         SimpleDateFormat sdf = new SimpleDateFormat(format);
         String result = sdf.format(date);
-        return Long.parseLong(result);
+        return Integer.valueOf(result);
     }
 
     /**
@@ -69,7 +69,7 @@ public class TimeUtil {
      * @param month
      * @return
      */
-    public static String toMonString(Long month){
+    public static String toMonString(Integer month){
         return toString(parseMon(month), MONTH_STR_FORMAT);
     }
 
@@ -87,7 +87,7 @@ public class TimeUtil {
      * @param day
      * @return
      */
-    public static String toDayString(Long day){
+    public static String toDayString(Integer day){
         return toDayString(parseDay(day));
     }
 
@@ -106,7 +106,7 @@ public class TimeUtil {
      * @param mon
      * @return
      */
-    public static Date parseMon(Long mon) {
+    public static Date parseMon(Integer mon) {
         return parse(mon, MONTH_NUM_FORMAT);
     }
 
@@ -124,7 +124,7 @@ public class TimeUtil {
      * @param day
      * @return
      */
-    public static Date parseDay(Long day) {
+    public static Date parseDay(Integer day) {
         return parse(day, DAY_NUM_FORMAT);
     }
 
@@ -144,7 +144,7 @@ public class TimeUtil {
      * @return
      */
     @SneakyThrows
-    private static Date parse(Long number, String format) {
+    private static Date parse(Integer number, String format) {
         return parse(String.valueOf(number), format);
     }
 
@@ -234,8 +234,8 @@ public class TimeUtil {
      * @param date
      * @return
      */
-    public static Long lastDayLongOfMonth(Date date){
-        return toDay(lastDayOfMonth(date));
+    public static Integer lastDayOfMonth(Date date){
+        return toDay(lastDateOfMonth(date));
     }
 
 
@@ -244,8 +244,8 @@ public class TimeUtil {
          * @param month
          * @return
          */
-    public static Date lastDayOfMonth(String month){
-        return lastDayOfMonth(parseMon(month));
+    public static Date lastDateOfMonth(String month){
+        return lastDateOfMonth(parseMon(month));
     }
 
     /**
@@ -253,7 +253,7 @@ public class TimeUtil {
      * @param month
      * @return
      */
-    public static Date lastDayOfMonth(Date month){
+    public static Date lastDateOfMonth(Date month){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(month);
 
@@ -285,7 +285,7 @@ public class TimeUtil {
      * @param
      * @return
      */
-    public static Long firstDayLongOfMonth(Date date){
+    public static Integer firstDayIntegerOfMonth(Date date){
         return toDay(firstDayOfMonth(date));
     }
 
@@ -317,7 +317,7 @@ public class TimeUtil {
      * @param
      * @return
      */
-    public static Long firstDayOfYear(Date date){
+    public static Integer firstDayOfYear(Date date){
         return toDay(firstDateOfYear(date));
     }
 
