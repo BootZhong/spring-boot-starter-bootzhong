@@ -1,9 +1,6 @@
 package top.bootzhong.common.util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -138,6 +135,31 @@ public class ListUtil {
         }
 
         return false;
+    }
+
+    /**
+     * 判断在集合中 指定的几个字段是否全部都相同
+     * WARNING!!! 不建议校验非基本类型数据，会有很大误差
+     * @param col
+     * @param funs
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean isUnique(Collection<T> col, Function<T, Object>... funs){
+        Set<String> set = new HashSet<>();
+        for (T c:col){
+            StringBuilder key = new StringBuilder();
+            for (Function<T, Object> f:funs){
+                key.append(f.apply(c));
+            }
+
+            set.add(key.toString());
+            if (set.size() > 1){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
