@@ -163,6 +163,22 @@ public class ListUtil {
     }
 
     /**
+     * 合并list
+     * @param ts
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> merge(List<T> ...ts){
+        List<T> r = new ArrayList<>();
+        for (List<T> t : ts) {
+            if (!isEmpty(t)){
+                r.addAll(t);
+            }
+        }
+        return r;
+    }
+
+    /**
      * 判断对象集合内对象的某属性是否为空
      * @param col 集合
      * @param funs 需要判断的项
