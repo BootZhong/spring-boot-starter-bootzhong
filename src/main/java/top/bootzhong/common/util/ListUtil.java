@@ -168,9 +168,9 @@ public class ListUtil {
      * @param <T>
      * @return
      */
-    public static <T> List<T> merge(List<T> ...ts){
+    public static <T> List<T> merge(List<? extends T> ...ts){
         List<T> r = new ArrayList<>();
-        for (List<T> t : ts) {
+        for (List<? extends T> t : ts) {
             if (!isEmpty(t)){
                 r.addAll(t);
             }
