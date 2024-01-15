@@ -10,7 +10,7 @@
     </parent>
     <groupId>top.bootzhong</groupId>
     <artifactId>spring-boot-starter-bootzhong</artifactId>
-    <version>0.0.8</version>
+    <version>0.0.9</version>
     <name>spring-boot-starter-bootzhong</name>
     <description>bootzhong通用包</description>
 
