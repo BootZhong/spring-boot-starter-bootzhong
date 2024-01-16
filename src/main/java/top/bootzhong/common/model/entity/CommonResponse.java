@@ -10,7 +10,7 @@ import lombok.Setter;
  */
 @Getter
 public class CommonResponse<T> {
-    private final T data;
+    private T data;
 
     private String msg;
 
@@ -42,6 +42,12 @@ public class CommonResponse<T> {
         }
     }
 
+    CommonResponse(String msg, Integer code, boolean success){
+        this.code = code;
+        this.msg = msg;
+        this.success = success;
+    }
+
     CommonResponse(T data, Integer code, boolean success){
         this.data = data;
         this.code = code;
@@ -62,5 +68,25 @@ public class CommonResponse<T> {
 
     public static <T> CommonResponse<T> success(T data, int page, int pageSize, long total){
         return new CommonResponse<>(data, new PageInfo(page, pageSize, total), 200, true);
+    }
+
+    /**
+     * 系统错误
+     * @param msg
+     * @return
+     * @param <T>
+     */
+    public static <T> CommonResponse<T> serverException(String msg){
+        return new CommonResponse<>(msg, 500, false);
+    }
+
+    /**
+     * 业务错误
+     * @param msg
+     * @return
+     * @param <T>
+     */
+    public static <T> CommonResponse<T> serviceException(String msg){
+        return new CommonResponse<>(msg, 400, false);
     }
 }
