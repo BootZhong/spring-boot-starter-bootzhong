@@ -2,6 +2,7 @@ package top.bootzhong.common.util;
 
 import java.util.*;
 import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -242,6 +243,12 @@ public class ListUtil {
             start = start + batchSize;
         }
         return result;
+    }
+
+    public static  <T> void ifNotEmptyDo(List<T> dataList, Consumer<List<T>> consumer){
+        if (!isEmpty(dataList)){
+            consumer.accept(dataList);
+        }
     }
 
     /**
