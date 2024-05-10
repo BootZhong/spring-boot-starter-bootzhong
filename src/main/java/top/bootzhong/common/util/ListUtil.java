@@ -5,6 +5,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * 集合工具类
@@ -249,6 +250,18 @@ public class ListUtil {
         if (!isEmpty(dataList)){
             consumer.accept(dataList);
         }
+    }
+
+    /**
+     * 去重
+     * @param dataList
+     * @return
+     */
+    public static List<String> distinct(List<String> dataList) {
+        if (isEmpty(dataList)){
+            return dataList;
+        }
+        return dataList.stream().distinct().collect(Collectors.toList());
     }
 
     /**
